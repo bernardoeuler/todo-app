@@ -1,0 +1,185 @@
+/* List Section */
+main {
+    padding: 3rem 5rem;
+}
+
+/* List Title */
+h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+/* Add new task button */
+.new-task {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    background: transparent;
+    margin-bottom: .5rem;
+    border: none;
+
+    cursor: pointer;
+}
+
+.new-task span {
+    color: #ffffff99;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.new-task i {
+    color: #ffffff99;
+    font-size: 1rem;
+}
+
+.new-task:hover span,
+.new-task:hover .fa-plus {
+    color: #ffffffcc;
+}
+
+.new-task:active span,
+.new-task:active .fa-plus {
+    color: #ffffff;
+}
+
+/* Divider */
+main .divider {
+    width: 100%;
+    margin: 0 auto 1.5rem;   
+}
+
+/* Task */
+.task {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+}
+
+.task-column {
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+}
+
+.task:hover {
+    background-color: #24272e80;
+}
+
+/* Checkbox */
+.check-container {
+    position: relative;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    margin-right: 1.5rem;
+}
+
+.checkbox {
+    appearance: none;
+    background-color: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border: 3px solid #24272e;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.tick {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    transform: scale(.6);
+    pointer-events: none;
+}
+
+.checkbox:hover {
+    border-color: #3a3f4a;
+}
+
+.checkbox:checked {
+    background-color: #13ce66;
+    border: transparent;
+}
+
+.checkbox:checked:hover {
+    opacity: 0.9;
+}
+
+.checkbox:checked ~ .tick {
+    opacity: 1;
+}
+
+/* Task content */
+.task-content {
+    width: 100%;
+}
+
+/* Task name */
+.task-name {
+    width: 100%;
+    background: none;
+    border: none;
+
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Delete task button */
+.delete-btn {
+    background: none;
+    border: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.task:hover > .delete-btn {
+    visibility: visible;
+    opacity: 1;
+}
+
+.delete-background {
+    width: 3rem;
+    height: 3rem;
+    background-color: #ff474721;
+    border: none;
+    border-radius: 50%;
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.delete-btn .delete-icon {
+    color: #ff4949;;
+    font-size: 1.4rem;
+    pointer-events: none;
+}
+
+.delete-background:hover {
+    background-color: #ff4949;
+}
+
+.delete-background:active {
+    background-color: #ff474780;
+}
+
+.delete-background:hover .delete-icon {
+    color: #fff;
+}
+
+.delete-background:active .delete-icon {
+    color: #ffffffb3;
+}

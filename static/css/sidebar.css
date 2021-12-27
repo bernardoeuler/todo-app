@@ -1,0 +1,93 @@
+aside {
+    padding: 3rem 1rem;
+}
+
+/* User Profile */
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-photo {
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    background-color: #1b6fff;
+    width: 4rem;
+    height: 4rem;
+    
+    border-radius: 50%;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+
+.user-photo i {
+    font-size: 1.5rem;
+}
+
+.user-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    margin-top: .6rem;
+}
+
+.user-email {
+    font-size: .7rem;
+    font-weight: 400;
+
+    color: #ffffffd3;
+
+    margin: .3rem 0 .1rem;
+}
+
+/* Divider */
+
+.divider {
+    background-color: #24272e;
+    width: 90%;
+    height: 2px;
+
+    margin: 2.5rem auto;   
+}
+
+/* Lists */
+
+.lists {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0 1rem;
+}
+
+.list { 
+    padding: 1.3rem;
+    border-radius: 3rem;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.list:hover {
+    background-color: #24272e80;
+}
+
+.list + .list {
+    margin-top: .5rem;
+}
+
+.list .fa-folder, .list .fa-plus {    
+    margin: 0 1rem 0 .5rem;
+    font-size: 1rem;
+}
+
+.list .fa-folder {
+    color: #1b6fff;
+}

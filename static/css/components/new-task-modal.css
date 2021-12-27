@@ -1,0 +1,67 @@
+/* Modal container / Overlay */
+.modal-container {
+    background-color: #000000cc;
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Box */
+.modal-content {
+    background-color: #121212;
+    padding: 2rem 2.5rem 2.5rem;
+    width: 30rem;
+}
+
+/* Task name textarea */
+.task-name-field {
+    background-color: transparent;
+    width: 100%;
+
+    border: none;
+    
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    resize: none;
+    overflow-y: hidden;
+}
+
+.task-name-field::placeholder {
+    color: #ffffff99;
+}
+
+/* Actions container */
+.modal-actions {
+    margin-top: 2rem;
+    float: right;
+}
+
+/* Actions */
+.action {
+    font-size: .9rem;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 2rem;
+
+    cursor: pointer;
+}
+
+/* Cancel button */
+.cancel-btn {
+    background-color: transparent;
+    color: #ff4949;
+}
+
+/* Save button */
+.save-btn {
+    background-color: transparent;
+    color: #4d8eff;
+    margin-left: 1.5rem;
+}
