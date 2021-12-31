@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/sidebar.css">
     <link rel="stylesheet" href="./static/css/tasks-section.css">
+    <link rel="stylesheet" href="./static/css/components/scrollbar.css">
     <link rel="stylesheet" href="./static/css/components/new-task-modal.css">
-    <script type="module" src="./js/load-tasks.js"></script>
+
+    <link rel="stylesheet" href="./static/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./static/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="./static/fontawesome/css/solid.css">
+
+    <script type="module" src="./js/lists/modules/load-lists.js"></script>
+    <script type="module" src="./js/tasks/modules/load-tasks.js"></script>
 </head>
 <body>
     <aside>
@@ -46,19 +52,29 @@
         <div id="tasks" class="list-page">
             <h1>Tasks</h1>
 
-            <button class="new-task">
-                <span>New Task</span>
-                <i class="fas fa-plus"></i>
-            </button>
+            <div class="tasks-actions">
+                <button class="new-task">
+                    <span>New Task</span>
+                    <i class="fas fa-plus"></i>
+                </button>
+
+                <button class="delete-all" onclick="deleteAll(this)">
+                    <span>Delete All</span>
+                    <!-- <i class="fas fa-trash-alt"></i> -->
+                </button>
+            </div>
 
             <div class="divider"></div>
 
             <div class="tasks-container"></div>
         </div>
     </main>
+    <script type="module" src="./js/lists/modules/new-list.js"></script>
 
-    <script type="module" src="./js/new-task.js"></script>
-    <script type="text/javascript" src="./js/delete-task.js"></script>
-    <script type="text/javascript" src="./js/complete-task.js"></script>
+    <script type="module" src="./js/tasks/modules/new-task-modal/new-task.js"></script>
+    <script type="module" src="./js/tasks/modules/new-task-modal/functions/create-task.js"></script>
+    <script type="text/javascript" src="./js/tasks/main-functions/delete-task.js"></script>
+    <script type="text/javascript" src="./js/tasks/main-functions/delete-all.js"></script>
+    <script type="text/javascript" src="./js/tasks/main-functions/--complete-task.js"></script>
 </body>
 </html>

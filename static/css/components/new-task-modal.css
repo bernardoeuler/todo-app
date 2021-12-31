@@ -56,7 +56,15 @@
 /* Cancel button */
 .cancel-btn {
     background-color: transparent;
-    color: #ff4949;
+    color: #ff4747;
+}
+
+.cancel-btn:hover {
+    color: #ff4747cc;
+}
+
+.cancel-btn:active {
+    color: #ff474799;
 }
 
 /* Save button */
@@ -64,4 +72,17 @@
     background-color: transparent;
     color: #4d8eff;
     margin-left: 1.5rem;
+}
+
+.save-btn:hover {
+    color: #4d8effcc;
+}
+
+.save-btn:active {
+    color: #4d8eff99 ;
+}
+
+.save-btn.disabled {
+    color: #ffffff99;
+    cursor: auto;
 }
