@@ -59,35 +59,53 @@ aside {
 
 /* Lists */
 
-.lists {
+.lists-container {
     font-size: 1.1rem;
     font-weight: 500;
     padding: 0 1rem;
 }
 
 .list { 
-    padding: 1.3rem;
+    padding: 1.5rem 2rem;
     border-radius: 3rem;
 
     display: flex;
     align-items: center;
 
     cursor: pointer;
+
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .list:hover {
     background-color: #24272e80;
 }
 
-.list + .list {
+.list + .list,
+.lists + .list {
     margin-top: .5rem;
 }
 
-.list .fa-folder, .list .fa-plus {    
-    margin: 0 1rem 0 .5rem;
-    font-size: 1rem;
+.list .fa-folder-open,
+.list .fa-folder,
+.list .fa-plus,
+.list span {    
+    pointer-events: none;
 }
 
+.list .fa-folder-open,
+.list .fa-folder,
+.list .fa-plus {    
+    margin: 0 1rem 0 .5rem;
+    font-size: 1.2rem;
+}
+
+.list .fa-folder-open,
 .list .fa-folder {
     color: #1b6fff;
+}
+
+.selected-list {
+    background: #24272e80;
 }

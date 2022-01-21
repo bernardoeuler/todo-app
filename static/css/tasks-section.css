@@ -20,21 +20,28 @@ h1 {
 .delete-all {
     background: transparent;
     border: none;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
     cursor: pointer;
 }
 
+.new-task {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
 .new-task *,
-.delete-all * {
+.delete-all {
     color: #ffffffd3;
     font-size: 1.1rem;
 }
 
 .new-task span,
-.delete-all span {
+.delete-all {
     font-weight: 700;
+}
+
+.new-task * {
+    pointer-events: none;
 }
 
 .new-task:hover * {

@@ -19,7 +19,7 @@
 }
 
 /* Task name textarea */
-.task-name-field {
+.name-field {
     background-color: transparent;
     width: 100%;
 
@@ -32,7 +32,7 @@
     overflow-y: hidden;
 }
 
-.task-name-field::placeholder {
+.name-field::placeholder {
     color: #ffffff99;
 }
 

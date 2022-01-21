@@ -10,13 +10,10 @@
     <link rel="stylesheet" href="./static/css/tasks-section.css">
     <link rel="stylesheet" href="./static/css/components/scrollbar.css">
     <link rel="stylesheet" href="./static/css/components/new-task-modal.css">
-
-    <link rel="stylesheet" href="./static/fontawesome/css/all.css">
-    <link rel="stylesheet" href="./static/fontawesome/css/brands.css">
-    <link rel="stylesheet" href="./static/fontawesome/css/solid.css">
-
-    <script type="module" src="./js/lists/modules/load-lists.js"></script>
-    <script type="module" src="./js/tasks/modules/load-tasks.js"></script>
+    
+    <script src="https://kit.fontawesome.com/36fa1ff1df.js" crossorigin="anonymous"></script>
+    <script type="module" src="./js/lists/load-lists.js"></script>
+    <script type="module" src="./js/tasks/load-tasks.js"></script>
 </head>
 <body>
     <aside>
@@ -30,26 +27,18 @@
 
         <div class="divider"></div>
 
-        <div class="lists">
-            <div class="list">
-                <i class="far fa-folder"></i>
-                <span>Tasks</span>
-            </div>
-
-            <div class="list">
-                <i class="far fa-folder"></i>
-                <span>Travel</span>
-            </div>
-
+        <div class="lists-container">
+            <div class="lists"></div>
+            
             <div class="list new-list">
                 <i class="fas fa-plus"></i>
                 <span>New List</span>
-            </div>    
+            </div>  
         </div>
     </aside>
 
     <main>
-        <div id="tasks" class="list-page">
+        <div id="tasks" class="task-page">
             <h1>Tasks</h1>
 
             <div class="tasks-actions">
@@ -58,10 +47,7 @@
                     <i class="fas fa-plus"></i>
                 </button>
 
-                <button class="delete-all" onclick="deleteAll(this)">
-                    <span>Delete All</span>
-                    <!-- <i class="fas fa-trash-alt"></i> -->
-                </button>
+                <button class="delete-all" onclick="deleteAll(this)">Delete All</button>
             </div>
 
             <div class="divider"></div>
@@ -69,12 +55,12 @@
             <div class="tasks-container"></div>
         </div>
     </main>
-    <script type="module" src="./js/lists/modules/new-list.js"></script>
-
-    <script type="module" src="./js/tasks/modules/new-task-modal/new-task.js"></script>
-    <script type="module" src="./js/tasks/modules/new-task-modal/functions/create-task.js"></script>
-    <script type="text/javascript" src="./js/tasks/main-functions/delete-task.js"></script>
-    <script type="text/javascript" src="./js/tasks/main-functions/delete-all.js"></script>
-    <script type="text/javascript" src="./js/tasks/main-functions/--complete-task.js"></script>
+    <script type="module" src="./js/lists/new-list.js"></script>
+    <script type="module" src="./js/lists/create-list.js"></script>
+    <script type="module" src="./js/tasks/new-task.js"></script>
+    <script type="module" src="./js/tasks/create-task.js"></script>
+    <script type="module" src="./js/tasks/page-change.js"></script>
+    <script type="text/javascript" src="./js/tasks/delete-task.js"></script>
+    <script type="text/javascript" src="./js/tasks/complete-task.js"></script>
 </body>
 </html>
