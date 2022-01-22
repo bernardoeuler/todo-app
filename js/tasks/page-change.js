@@ -1,26 +1,36 @@
-export default function changeTaskPage(list) {
+import createTask from "./create-task.js"
+
+export default function changeListPage(list) {
     const mainContent = document.querySelector("main")
     mainContent.innerHTML = ""
-    createTaskPage()
+    createListPage()
 
-    function createTaskPage() {
+    let tasksArray = list.listTasks
+    if (tasksArray.length) {
+        tasksArray.forEach(task => {
+            let { name:taskName, id:taskId } = task
+            createTask(taskName, taskId)
+        })
+    }
+
+    function createListPage() {
         let titleText = list.listName
 
         // Create task page container 
-        let taskPage = document.createElement("div")
-        taskPage.id = titleText
-        taskPage.classList.add("task-page")
-        mainContent.appendChild(taskPage)
+        let listPage = document.createElement("div")
+        listPage.id = titleText
+        listPage.classList.add("list-page")
+        mainContent.appendChild(listPage)
 
         // Create page title
         let pageTitle = document.createElement("h1")
         pageTitle.innerText = titleText
-        taskPage.appendChild(pageTitle)
+        listPage.appendChild(pageTitle)
 
         // Create action buttons
         let tasksActions = document.createElement("div")
         tasksActions.classList.add("tasks-actions")
-        taskPage.appendChild(tasksActions)
+        listPage.appendChild(tasksActions)
 
         // Create new task button
         let newTaskBtn = document.createElement("button")
@@ -45,11 +55,11 @@ export default function changeTaskPage(list) {
         // Create divider element
         let divider = document.createElement("div")
         divider.classList.add("divider")
-        taskPage.appendChild(divider)
+        listPage.appendChild(divider)
 
         // Create tasks container
         let tasksContainer = document.createElement("div")
         tasksContainer.classList.add("tasks-container")
-        taskPage.appendChild(tasksContainer)   
+        listPage.appendChild(tasksContainer)
     }
 }

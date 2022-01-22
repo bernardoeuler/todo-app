@@ -1,4 +1,4 @@
-import changeTaskPage from "../tasks/page-change.js"
+import changeListPage from "../tasks/page-change.js"
 import createListObj from "./create-list-obj.js"
 import createList from "./create-list.js"
 
@@ -35,7 +35,7 @@ listsSection.addEventListener("click", e => {
         let listsStr = JSON.stringify(lists)
         localStorage.setItem("lists", listsStr)
 
-        changeTaskPage(selectedList)
+        changeListPage(selectedList)
     }
 })
 

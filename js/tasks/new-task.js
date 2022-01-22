@@ -1,11 +1,15 @@
 import createTask from "./create-task.js"
 
 const mainContent = document.querySelector("main")
+let lists = JSON.parse(localStorage.getItem("lists"))
 
 mainContent.addEventListener("click", e => {
-    let tasksContainer = mainContent.querySelector(".tasks-container")
+    let listPage = mainContent.querySelector(".list-page")
+    let listTitle = listPage.querySelector("h1").innerText
+    let selectedListIndex = lists.findIndex(list => list.listName === listTitle)
+    
     let elm = e.target
-    console.log(tasksContainer)
+    console.log(listPage)
     if (elm.classList.contains("new-task")) {
         // Remove focus from the new task button
         elm.blur()
@@ -79,8 +83,9 @@ mainContent.addEventListener("click", e => {
             let taskId = Date.now().toString()
             let taskNameText = taskNameField.value
             let taskObj = createTaskObj(taskNameText, taskId)
-            let taskObjString = JSON.stringify(taskObj)
-            localStorage.setItem(taskId, taskObjString)
+            lists[selectedListIndex].listTasks.push(taskObj)
+            let listsStr = JSON.stringify(lists)
+            localStorage.setItem("lists", listsStr)
     
             // Create a new task component
             createTask(taskNameText, taskId)
@@ -88,15 +93,14 @@ mainContent.addEventListener("click", e => {
             // Exit modal and remove it from the HTML
             document.body.removeChild(modalContainer)
     
-            console.log(JSON.parse(localStorage.getItem(taskId)))
+            console.log(lists)
         })
     }
 })
 
-function createTaskObj(name, id, index) {
+function createTaskObj(name, id) {
     return {
         name: name,
         id: id,
-        index: index
     }
 }

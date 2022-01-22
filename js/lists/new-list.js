@@ -1,4 +1,4 @@
-import changeTaskPage from "../tasks/page-change.js"
+import changeListPage from "../tasks/page-change.js"
 import createListObj from "./create-list-obj.js"
 import createList from "./create-list.js"
 
@@ -101,6 +101,6 @@ newList.addEventListener("click", () => {
         // Exit modal and remove it from the HTML
         document.body.removeChild(modalContainer)
 
-        changeTaskPage(listObj)
+        changeListPage(listObj)
     })
 })

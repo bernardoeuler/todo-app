@@ -1,17 +1,7 @@
-import changeTaskPage from "./page-change.js"
-import createTask from "./create-task.js"
+import changeListPage from "./page-change.js"
 
 let lists = JSON.parse(localStorage.getItem("lists"))
-
+let selectedList = lists.find(list => list.selected === true)
 document.addEventListener("DOMContentLoaded", () => {
-    // changeTaskPage(selectedList)
-
-    if (localStorage.length) {
-        for (let i = 0 ; i < localStorage.length ; i++) {
-            let taskObjString = localStorage.getItem("task_" + (i + 1))
-            let taskObj = JSON.parse(taskObjString)
-            let { name:taskName, id:taskId } = taskObj
-            createTask(taskName, taskId)
-        }
-    }
+    changeListPage(selectedList)    
 })
