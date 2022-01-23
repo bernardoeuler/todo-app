@@ -1,4 +1,4 @@
-import changeListPage from "../tasks/page-change.js"
+import changeListPage from "./page-change.js"
 import createListObj from "./create-list-obj.js"
 import createList from "./create-list.js"
 
@@ -69,9 +69,6 @@ newList.addEventListener("click", () => {
     })
 
     saveBtn.addEventListener("click", () => {
-        // Remove focus state from the textarea
-        listNameField.blur()
-
         const listsContainer = document.querySelector('.lists-container')
         const listsSection = listsContainer.firstElementChild
         let lists = JSON.parse(localStorage.getItem("lists"))
@@ -91,7 +88,6 @@ newList.addEventListener("click", () => {
         let listsStr = JSON.stringify(lists)
         localStorage.setItem("lists", listsStr)
 
-
         // Create a new list component
         createList(listName, listId, true)
 
@@ -102,5 +98,7 @@ newList.addEventListener("click", () => {
         document.body.removeChild(modalContainer)
 
         changeListPage(listObj)
+
+        listNameField.blur()
     })
 })

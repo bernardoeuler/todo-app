@@ -1,15 +1,14 @@
 import createTask from "./create-task.js"
 
 const mainContent = document.querySelector("main")
-let lists = JSON.parse(localStorage.getItem("lists"))
 
 mainContent.addEventListener("click", e => {
-    let listPage = mainContent.querySelector(".list-page")
-    let listTitle = listPage.querySelector("h1").innerText
-    let selectedListIndex = lists.findIndex(list => list.listName === listTitle)
+    let lists = JSON.parse(localStorage.getItem("lists"))
+    let listPage = document.querySelector(".list-page")
+    let listId = listPage.dataset.listId
+    let selectedListIndex = lists.findIndex(list => list.listId === listId)
     
     let elm = e.target
-    console.log(listPage)
     if (elm.classList.contains("new-task")) {
         // Remove focus from the new task button
         elm.blur()
@@ -75,10 +74,7 @@ mainContent.addEventListener("click", e => {
             document.body.removeChild(modalContainer)
         })
     
-        saveBtn.addEventListener("click", () => {
-            // Remove focus state from the textarea
-            taskNameField.blur()
-    
+        saveBtn.addEventListener("click", () => {    
             // Get task name and export it to local storage
             let taskId = Date.now().toString()
             let taskNameText = taskNameField.value
@@ -93,7 +89,8 @@ mainContent.addEventListener("click", e => {
             // Exit modal and remove it from the HTML
             document.body.removeChild(modalContainer)
     
-            console.log(lists)
+            // Remove focus state from the textarea
+            taskNameField.blur()
         })
     }
 })

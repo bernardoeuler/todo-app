@@ -2,6 +2,10 @@ aside {
     padding: 3rem 1rem;
 }
 
+aside::-webkit-scrollbar {
+    display: none;
+}
+
 /* User Profile */
 
 .profile {
@@ -63,6 +67,7 @@ aside {
     font-size: 1.1rem;
     font-weight: 500;
     padding: 0 1rem;
+    overflow-y: auto;
 }
 
 .list { 
@@ -73,9 +78,6 @@ aside {
     align-items: center;
 
     cursor: pointer;
-
-    word-break: break-word;
-    hyphens: auto;
 }
 
 .list:hover {

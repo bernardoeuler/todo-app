@@ -1,7 +1,6 @@
-import changeListPage from "../tasks/page-change.js"
+import changeListPage from "./page-change.js"
 import createListObj from "./create-list-obj.js"
 import createList from "./create-list.js"
-
 const listsContainer = document.querySelector(".lists-container")
 const listsSection = listsContainer.firstElementChild
 
@@ -13,7 +12,7 @@ listsSection.addEventListener("click", e => {
     let elm = e.target
     getLists()
 
-    if (elm.className === "list") {
+    if (elm.classList.contains("list")) {
         let selectedListId = elm.dataset.listId
         let listElements = Array.from(listsSection.children)
 
@@ -42,7 +41,7 @@ listsSection.addEventListener("click", e => {
 function getLists() {
     let listsArray = JSON.parse(localStorage.getItem("lists"))
     if (listsArray === null) {
-        let defaultListObj = createListObj("Tasks", "1", [], true)
+        let defaultListObj = createListObj("Tasks", "default", [], true)
         lists = [defaultListObj]
         let listsStr = JSON.stringify(lists)
         localStorage.setItem("lists", listsStr)
