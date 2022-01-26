@@ -6,7 +6,7 @@ mainContent.addEventListener("click", e => {
     let lists = JSON.parse(localStorage.getItem("lists"))
     let listPage = document.querySelector(".list-page")
     let listId = listPage.dataset.listId
-    let selectedListIndex = lists.findIndex(list => list.listId === listId)
+    let selectedListIndex = lists.findIndex(list => list.id === listId)
     
     let elm = e.target
     if (elm.classList.contains("new-task")) {
@@ -42,6 +42,7 @@ mainContent.addEventListener("click", e => {
         modalActions.appendChild(saveBtn)
     
         document.body.appendChild(modalContainer)
+        
         taskNameField.focus()
     
         taskNameField.addEventListener("keydown", evt => {
@@ -75,16 +76,19 @@ mainContent.addEventListener("click", e => {
         })
     
         saveBtn.addEventListener("click", () => {    
-            // Get task name and export it to local storage
+            // Get task data
+            let taskName = taskNameField.value
             let taskId = Date.now().toString()
-            let taskNameText = taskNameField.value
-            let taskObj = createTaskObj(taskNameText, taskId)
-            lists[selectedListIndex].listTasks.push(taskObj)
+            let checked = false
+            let taskObj = createTaskObj(taskName, taskId, checked)
+            
+            // Export it to local storage
+            lists[selectedListIndex].tasks.push(taskObj)
             let listsStr = JSON.stringify(lists)
             localStorage.setItem("lists", listsStr)
     
             // Create a new task component
-            createTask(taskNameText, taskId)
+            createTask(taskName, taskId, checked)
     
             // Exit modal and remove it from the HTML
             document.body.removeChild(modalContainer)
@@ -95,9 +99,10 @@ mainContent.addEventListener("click", e => {
     }
 })
 
-function createTaskObj(name, id) {
+function createTaskObj(name, id, checked) {
     return {
         name: name,
         id: id,
+        checked: checked
     }
 }

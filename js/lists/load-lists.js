@@ -1,10 +1,12 @@
 import changeListPage from "./page-change.js"
 import createListObj from "./create-list-obj.js"
 import createList from "./create-list.js"
+
 const listsContainer = document.querySelector(".lists-container")
 const listsSection = listsContainer.firstElementChild
 
 let lists
+
 getLists()
 render()
 
@@ -14,10 +16,13 @@ listsSection.addEventListener("click", e => {
 
     if (elm.classList.contains("list")) {
         let selectedListId = elm.dataset.listId
-        let listElements = Array.from(listsSection.children)
+        let listIcon = elm.querySelector("i")
+
+        let listsSectionElements = Array.from(listsSection.children)
+        let listElements = listsSectionElements.filter(elm => elm.classList.contains("list"))
 
         listElements.forEach(listElement => {
-            let listIcon = listElement.firstElementChild
+            let listIcon = listElement.querySelector("i")
             listIcon.className = "far fa-folder"
             listElement.classList.remove("selected-list")
         })
@@ -27,10 +32,12 @@ listsSection.addEventListener("click", e => {
         })
 
         elm.classList.add("selected-list")
-        elm.children[0].className = "far fa-folder-open"
-        let selectedListIndex = lists.findIndex(elm => elm.listId === selectedListId)
+        listIcon.className = "far fa-folder-open"
+
+        let selectedListIndex = lists.findIndex(list => list.id === selectedListId)
         let selectedList = lists[selectedListIndex]
         selectedList.selected = true
+
         let listsStr = JSON.stringify(lists)
         localStorage.setItem("lists", listsStr)
 
@@ -55,8 +62,8 @@ function getLists() {
 function render() {
     listsSection.innerHTML = ""
     lists.forEach(list => {
-        let { listName, listId, selected } = list
-        createList(listName, listId, selected)
+        let { name, id, selected } = list
+        createList(name, id, selected)
     })
 }
 

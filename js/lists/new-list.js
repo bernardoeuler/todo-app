@@ -73,12 +73,16 @@ newList.addEventListener("click", () => {
         const listsSection = listsContainer.firstElementChild
         let lists = JSON.parse(localStorage.getItem("lists"))
 
-        let listsArray = listsSection.children
+        let listsSectionElements = Array.from(listsSection.children)
+        let listElements = listsSectionElements.filter(elm => elm.classList.contains("list"))
 
-        for (let i = 0 ; i < lists.length ; i++) {
-            listsArray[i].classList.remove("selected-list")
-            lists[i].selected = false
-        }
+        listElements.forEach(list => {
+            list.classList.remove("selected-list")
+        })
+        
+        lists.forEach(list => {
+            list.selected = false
+        })
 
         let listName = listNameField.value
         let listId = Date.now().toString()

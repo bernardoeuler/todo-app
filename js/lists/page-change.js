@@ -5,24 +5,25 @@ export default function changeListPage(list) {
     mainContent.innerHTML = ""
     createListPage()
 
-    let tasksArray = list.listTasks
+    let tasksArray = list.tasks
     if (tasksArray.length) {
         tasksArray.forEach(task => {
-            let { name, id } = task
-            createTask(name, id)
+            let { name, id, checked } = task
+            createTask(name, id, checked)
         })
     }
 
     function createListPage() {
         // Get list name
-        let titleText = list.listName
+        let titleText = list.name
         let listId
-        if (list.listId === "default") {
+        
+        if (list.id === "default") {
             listId = "default"
         }
 
         else {
-            listId = list.listId
+            listId = list.id
         }
         
 

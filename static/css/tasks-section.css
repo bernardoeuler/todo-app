@@ -31,7 +31,7 @@ h1 {
 
 .new-task *,
 .delete-all {
-    color: hsla(0, 0%, 100%, 0.827);
+    color: #ffffffb3;
     font-size: 1.1rem;
 }
 
@@ -77,13 +77,8 @@ main .divider {
     cursor: pointer;
 }
 
-.task-column {
-    display: flex;
-    align-items: center;
-}
-
 .task:hover {
-    background-color: #24272e80;
+    background-color: #24272e4d;
 }
 
 /* Checkbox */
@@ -139,12 +134,17 @@ main .divider {
 
 /* Task name */
 .task-name {
-    max-width: 100%;
     background: none;
     border: none;
 
     font-size: 1.2rem;
     font-weight: 500;
+}
+
+.check-container.checked ~ .task-content .task-name {
+    text-decoration: line-through;
+    text-decoration-thickness: .15rem;
+    color: #ffffffb3;
 }
 
 /* Delete task button */

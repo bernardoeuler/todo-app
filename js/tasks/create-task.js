@@ -1,4 +1,4 @@
-export default function createTask(taskNameText, taskId) {
+export default function createTask(taskNameText, taskId, checked) {
     // Get tasks container div
     let tasksContainer = document.querySelector(".tasks-container")
     
@@ -7,27 +7,24 @@ export default function createTask(taskNameText, taskId) {
     newTask.dataset.taskId = taskId
     newTask.classList.add("task")
 
-    // Create task column div
-    let taskColumn = document.createElement("div")
-    taskColumn.classList.add("task-column")
-    newTask.appendChild(taskColumn)
-
     // Create checkbox container div
-    let checkContainer = document.createElement("div")
-    checkContainer.classList.add("check-container")
-    taskColumn.appendChild(checkContainer)
+    let checkboxContainer = document.createElement("div")
+    checkboxContainer.classList.add("check-container")
+    newTask.appendChild(checkboxContainer)
+    if (checked) checkboxContainer.classList.add("checked")
 
     // Create checkbox container div
     let checkboxInput = document.createElement("input")
     checkboxInput.classList.add("checkbox")
     checkboxInput.setAttribute("type", "checkbox")
-    checkboxInput.setAttribute("onclick", "completeTask(this)")
-    checkContainer.appendChild(checkboxInput)
+    checkboxInput.setAttribute("onclick", "checkTask(this)")
+    checkboxContainer.appendChild(checkboxInput)
+    if (checked) checkboxInput.checked = checked
 
     // Create tick icon div
     let tickContainer = document.createElement("div")
     tickContainer.classList.add("tick")
-    checkContainer.appendChild(tickContainer)
+    checkboxContainer.appendChild(tickContainer)
 
     // Create tick icon
     let tickIcon = document.createElement("img")

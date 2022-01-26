@@ -5,11 +5,16 @@ export default function createList(name, id, selected) {
     let newList = document.createElement("div")
     let listIcon = document.createElement("i")
     let listName = document.createElement("span")
+    let listSettings = document.createElement("div")
+    let listSeparator = document.createElement("div")
+
     newList.dataset.listId = id
     newList.classList.add("list")
     listIcon.classList.add("far", "fa-folder")
     newList.setAttribute("ondblclick", "deleteList(this)")
     listName.innerText = name
+    listSeparator.classList.add("list-separator")
+
 
     if (selected) {
         newList.classList.add("selected-list")
@@ -19,4 +24,5 @@ export default function createList(name, id, selected) {
     newList.appendChild(listIcon)
     newList.appendChild(listName)
     listsSection.appendChild(newList)
+    listsSection.appendChild(listSeparator)
 }
