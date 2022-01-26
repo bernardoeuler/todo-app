@@ -76,25 +76,32 @@ aside::-webkit-scrollbar {
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 
     cursor: pointer;
 }
 
+.selected-list {
+    background: #24272e4d;
+}
+
 .list:hover {
-    background-color: #24272e4d;
+    background-color: #24272e99;
 }
 
 .list .fa-folder-open,
 .list .fa-folder,
 .list .fa-plus,
+.list .dots,
 .list span {    
     pointer-events: none;
 }
 
 .list .fa-folder-open,
 .list .fa-folder,
-.list .fa-plus {    
-    margin-right: 1rem;
+.list .fa-plus,
+.list .dots {    
     font-size: 1.2rem;
 }
 
@@ -103,8 +110,40 @@ aside::-webkit-scrollbar {
     color: #1b6fff;
 }
 
-.selected-list {
-    background: #24272e4d;
+.list-options {
+    background-color: transparent;
+    width: 2rem;
+    height: 2rem;
+
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+
+    flex-shrink: 0;
+}
+
+.list:hover > .list-options {
+    visibility: visible;
+    opacity: 1;
+}
+
+.list-options:hover {
+    background-color: #2d3139;
+}
+
+.list .dots {
+    color: #ffffffb3;
+}
+
+.list .list-name-container {
+    width: 100%;
 }
 
 .list-separator {
