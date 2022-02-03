@@ -26,7 +26,7 @@ listsSection.addEventListener("click", e => {
             listIcon.className = "far fa-folder"
             listElement.classList.remove("selected-list")
         })
-
+        
         lists.forEach(list => {
             list.selected = false
         })
@@ -70,7 +70,7 @@ function render() {
 function deleteList(list) {
     listsContainer.removeChild(list)
     let deletedListId = list.dataset.listId
-    let deletedListIndex = lists.findIndex(elm => elm.listId === deletedListId)
+    let deletedListIndex = lists.findIndex(list => list.id === deletedListId)
     lists.splice(deletedListIndex, 1)
     let listsStr = JSON.stringify(lists)
     localStorage.setItem("lists", listsStr)

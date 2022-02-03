@@ -35,7 +35,7 @@ h1 {
     font-size: 1.1rem;
 }
 
-.new-task span,
+.new-task div,
 .delete-all {
     font-weight: 700;
 }

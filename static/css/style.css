@@ -21,7 +21,7 @@ body {
     
     display: grid;
     gap: 4px;
-    grid-template-columns: 25rem 1fr;
+    grid-template-columns: 20rem 1fr;
 }
 
 aside, main {

@@ -48,7 +48,7 @@ export default function changeListPage(list) {
         newTaskBtn.classList.add("new-task")
         tasksActions.appendChild(newTaskBtn)
         
-        let newTaskBtnText = document.createElement("span")
+        let newTaskBtnText = document.createElement("div")
         newTaskBtnText.innerText = "New Task"
         newTaskBtn.appendChild(newTaskBtnText)
 

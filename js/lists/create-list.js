@@ -5,7 +5,6 @@ export default function createList(name, id, selected) {
     let newList = document.createElement("div")
     newList.dataset.listId = id
     newList.classList.add("list")
-    newList.setAttribute("ondblclick", "deleteList(this)")
     listsSection.appendChild(newList)
 
     let listIcon = document.createElement("i")
@@ -16,14 +15,13 @@ export default function createList(name, id, selected) {
     listNameContainer.classList.add("list-name-container")
     newList.appendChild(listNameContainer)
 
-    let listName = document.createElement("span")
+    let listName = document.createElement("div")
     listName.classList.add("list-name")
     listName.innerText = name
     listNameContainer.appendChild(listName)
 
     let listOptions = document.createElement("button")
     listOptions.classList.add("list-options")
-    listOptions.setAttribute("onclick", "openListOptions(this)")
     newList.appendChild(listOptions)
 
     let listOptionsIcon = document.createElement("i")

@@ -6,6 +6,36 @@
 
 .list-menu-container {
     position: absolute;
-    background-color: red;
+    background-color: #24272e;
+
+    padding: .5rem 0;
+
     transform: translate(30%, -100%);
+    box-shadow: 0 0 1rem #0000004d;
+}
+
+.list-menu-container .option {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    padding: .5rem 1rem;
+
+    cursor: pointer;
+}
+
+.list-menu-container .option.disabled {
+    pointer-events: none;
+}
+
+.list-menu-container .option.disabled * {
+    color: #ffffff66;
+}
+
+.list-menu-container .option:hover {
+    background-color: #1b1d22;   
+}
+
+.list-menu-container .option:active {
+    background-color: #16181d;   
 }

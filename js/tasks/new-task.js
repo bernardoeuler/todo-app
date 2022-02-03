@@ -1,12 +1,14 @@
-import createTask from "./create-task.js"
+// Import external functions
+import exitModal from "./modal/exit-modal.js"
+import resizeField from "./modal/resize-field.js"
+import verifyField from "./modal/verify-field.js"
+import cancelBtnActions from "./modal/cancel.js"
+import saveBtnActions from "./modal/save.js"
 
 const mainContent = document.querySelector("main")
 
 mainContent.addEventListener("click", e => {
-    let lists = JSON.parse(localStorage.getItem("lists"))
-    let listPage = document.querySelector(".list-page")
-    let listId = listPage.dataset.listId
-    let selectedListIndex = lists.findIndex(list => list.id === listId)
+    
     
     let elm = e.target
     if (elm.classList.contains("new-task")) {
@@ -24,6 +26,7 @@ mainContent.addEventListener("click", e => {
         let taskNameField = document.createElement("textarea")
         taskNameField.classList.add("name-field")
         taskNameField.setAttribute("placeholder", "Task name")
+        taskNameField.setAttribute("maxlength", "120")
         taskNameField.setAttribute("rows", "1")
         modalContent.appendChild(taskNameField)
     
@@ -40,69 +43,27 @@ mainContent.addEventListener("click", e => {
         saveBtn.classList.add("action", "save-btn")
         saveBtn.innerText = "Save"
         modalActions.appendChild(saveBtn)
-    
-        document.body.appendChild(modalContainer)
-        
-        taskNameField.focus()
-    
-        taskNameField.addEventListener("keydown", evt => {
-            if (evt.key === "Enter") {
-                evt.preventDefault()
-                saveBtn.click()
-            }
-        })
-    
-        taskNameField.addEventListener("input", () => {
-            taskNameField.style.height = "auto"
-            taskNameField.style.height = taskNameField.scrollHeight + "px"
-        })
-    
-        // For window size changes
-        window.addEventListener("resize", () => {
-            taskNameField.style.height = "auto"
-            taskNameField.style.height = taskNameField.scrollHeight + "px"
-        })
-    
+
         // Exit modal clicking outside the modal
-        modalContainer.addEventListener("click", evt => {
-            if (evt.target == modalContainer)
-                document.body.removeChild(modalContainer)
-        })
-    
+        exitModal(modalContainer, taskNameField)
+
+        // Increase or decrease the field height based on its value or window size
+        resizeField(taskNameField, saveBtn)
+
+        // Disable the save button 
+        verifyField(taskNameField, saveBtn)
+
         // Exit modal clicking on cancel button
-        cancelBtn.addEventListener("click", () => {
-            taskNameField.blur()
-            document.body.removeChild(modalContainer)
-        })
-    
-        saveBtn.addEventListener("click", () => {    
-            // Get task data
-            let taskName = taskNameField.value
-            let taskId = Date.now().toString()
-            let checked = false
-            let taskObj = createTaskObj(taskName, taskId, checked)
-            
-            // Export it to local storage
-            lists[selectedListIndex].tasks.push(taskObj)
-            let listsStr = JSON.stringify(lists)
-            localStorage.setItem("lists", listsStr)
-    
-            // Create a new task component
-            createTask(taskName, taskId, checked)
-    
-            // Exit modal and remove it from the HTML
-            document.body.removeChild(modalContainer)
-    
-            // Remove focus state from the textarea
-            taskNameField.blur()
-        })
+        cancelBtnActions(cancelBtn, taskNameField, modalContainer)
+
+        // Save the new task in local storage and put it in HTML
+        saveBtnActions(saveBtn, taskNameField, modalContainer)
+
+        // Add modal element to the HTML
+        document.body.appendChild(modalContainer)
+
+        // Enter (focus) the <textarea> automatically
+        taskNameField.focus()
     }
 })
 
-function createTaskObj(name, id, checked) {
-    return {
-        name: name,
-        id: id,
-        checked: checked
-    }
-}
