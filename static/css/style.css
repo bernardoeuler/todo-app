@@ -9,6 +9,9 @@
     outline: none;
 
     transition: ease-in-out .2s;
+
+    word-break: break-word;
+    hyphens: auto;
 }
 
 body {
@@ -18,7 +21,7 @@ body {
     
     display: grid;
     gap: 4px;
-    grid-template-columns: 22rem 1fr;
+    grid-template-columns: 20rem 1fr;
 }
 
 aside, main {

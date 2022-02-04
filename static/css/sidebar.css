@@ -1,5 +1,11 @@
 aside {
-    padding: 3rem 1rem;
+    padding-top: 3rem;
+}
+
+/* Scroll Bar */
+
+aside::-webkit-scrollbar {
+    width: .6rem;
 }
 
 /* User Profile */
@@ -42,7 +48,7 @@ aside {
     font-size: .7rem;
     font-weight: 400;
 
-    color: #ffffffd3;
+    color: #ffffffb3;
 
     margin: .3rem 0 .1rem;
 }
@@ -51,43 +57,111 @@ aside {
 
 .divider {
     background-color: #24272e;
-    width: 90%;
-    height: 2px;
+    width: 100%;
+    height: 3px;
 
-    margin: 2.5rem auto;   
+    margin: 2.5rem auto 0;   
 }
 
 /* Lists */
 
-.lists {
-    font-size: 1.1rem;
+.lists-container {
+    font-size: 1rem;
     font-weight: 500;
-    padding: 0 1rem;
+    overflow-y: auto;
 }
 
 .list { 
-    padding: 1.3rem;
-    border-radius: 3rem;
+    padding: 1rem 1rem;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 
     cursor: pointer;
 }
 
+.selected-list {
+    background: #24272e4d;
+}
+
 .list:hover {
-    background-color: #24272e80;
+    background-color: #24272e99;
 }
 
-.list + .list {
-    margin-top: .5rem;
+.list .fa-folder-open,
+.list .fa-folder,
+.list .fa-plus,
+.list .dots,
+.list div {    
+    pointer-events: none;
 }
 
-.list .fa-folder, .list .fa-plus {    
-    margin: 0 1rem 0 .5rem;
+.list .fa-folder-open,
+.list .fa-folder,
+.list .fa-plus,
+.list .dots {    
+    font-size: 1.2rem;
+}
+
+.list .fa-folder-open,
+.list .fa-folder {
+    color: #1b6fff;
+}
+
+.list-options {
+    background-color: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+
+    flex-shrink: 0;
+}
+
+.list:hover > .list-options {
+    visibility: visible;
+    opacity: 1;
+}
+
+.list-options:hover {
+    background-color: #2d3139;
+}
+
+.list .dots {
+    color: #ffffffb3;
     font-size: 1rem;
 }
 
-.list .fa-folder {
-    color: #1b6fff;
+.list .list-name-container {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-name-container .list-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-separator {
+    width: 100%;
+    height: 2px;
+    background: #24272e;
+}
+
+.new-list {
+    justify-content: normal;
 }

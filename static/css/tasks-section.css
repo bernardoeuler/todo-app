@@ -5,42 +5,59 @@ main {
 
 /* List Title */
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
 }
 
-/* Add new task button */
+/* Task action buttons */
+.tasks-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+.new-task,
+.delete-all {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .new-task {
     display: flex;
     align-items: center;
     gap: .5rem;
-
-    background: transparent;
-    margin-bottom: .5rem;
-    border: none;
-
-    cursor: pointer;
 }
 
-.new-task span {
-    color: #ffffff99;
-    font-weight: 700;
+.new-task *,
+.delete-all {
+    color: #ffffffb3;
     font-size: 1.1rem;
 }
 
-.new-task i {
-    color: #ffffff99;
-    font-size: 1rem;
+.new-task div,
+.delete-all {
+    font-weight: 700;
 }
 
-.new-task:hover span,
-.new-task:hover .fa-plus {
-    color: #ffffffcc;
+.new-task * {
+    pointer-events: none;
 }
 
-.new-task:active span,
-.new-task:active .fa-plus {
+.new-task:hover * {
     color: #ffffff;
+}
+
+.new-task:active * {
+    color: #ffffff99;
+}
+
+.delete-all:hover {
+    color: #ff4747;
+}
+
+.delete-all:active {
+    color: #ff4747cc;
 }
 
 /* Divider */
@@ -53,31 +70,22 @@ main .divider {
 .task {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 2rem;
 
     padding: 1.5rem 2rem;
     cursor: pointer;
 }
 
-.task-column {
-    display: flex;
-    align-items: center;
-
-    flex: 1;
-}
-
 .task:hover {
-    background-color: #24272e80;
+    background-color: #24272e4d;
 }
 
 /* Checkbox */
 .check-container {
     position: relative;
-
     width: 1.5rem;
     height: 1.5rem;
-
-    margin-right: 1.5rem;
 }
 
 .checkbox {
@@ -122,11 +130,11 @@ main .divider {
 /* Task content */
 .task-content {
     width: 100%;
+    pointer-events: none;
 }
 
 /* Task name */
 .task-name {
-    width: 100%;
     background: none;
     border: none;
 
@@ -134,12 +142,28 @@ main .divider {
     font-weight: 500;
 }
 
+.check-container.checked ~ .task-content .task-name {
+    text-decoration: line-through;
+    text-decoration-thickness: .15rem;
+    color: #ffffffb3;
+}
+
 /* Delete task button */
 .delete-btn {
-    background: none;
+    background-color: #ff474721;
+    width: 2rem;
+    height: 2rem;
+
     border: none;
+    border-radius: 50%;
+
+    position: relative;
+
+    cursor: pointer;
     visibility: hidden;
     opacity: 0;
+
+    flex-shrink: 0;
 }
 
 .task:hover > .delete-btn {
@@ -147,39 +171,30 @@ main .divider {
     opacity: 1;
 }
 
-.delete-background {
-    width: 3rem;
-    height: 3rem;
-    background-color: #ff474721;
-    border: none;
-    border-radius: 50%;
-    padding: 1rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-}
-
 .delete-btn .delete-icon {
-    color: #ff4949;;
-    font-size: 1.4rem;
+    color: #ff4949;
+    font-size: 1.25rem;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     pointer-events: none;
 }
 
-.delete-background:hover {
+.delete-btn:hover {
     background-color: #ff4949;
 }
 
-.delete-background:active {
+.delete-btn:active {
     background-color: #ff474780;
 }
 
-.delete-background:hover .delete-icon {
+.delete-btn:hover .delete-icon {
     color: #fff;
 }
 
-.delete-background:active .delete-icon {
+.delete-btn:active .delete-icon {
     color: #ffffffb3;
 }
