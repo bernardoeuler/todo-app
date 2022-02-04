@@ -1,4 +1,4 @@
-import changeListPage from "../page-change.js"
+import changeListPage from "../../tasks/page-change.js"
 import createList from "../create-list.js"
 import createListObj from "../create-list-obj.js"
 

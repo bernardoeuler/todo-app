@@ -130,6 +130,7 @@ main .divider {
 /* Task content */
 .task-content {
     width: 100%;
+    pointer-events: none;
 }
 
 /* Task name */
@@ -150,8 +151,8 @@ main .divider {
 /* Delete task button */
 .delete-btn {
     background-color: #ff474721;
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
 
     border: none;
     border-radius: 50%;
@@ -172,7 +173,7 @@ main .divider {
 
 .delete-btn .delete-icon {
     color: #ff4949;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
 
     position: absolute;
     top: 50%;

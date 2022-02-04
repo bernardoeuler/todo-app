@@ -3,9 +3,9 @@ import resizeField from "./resize-field.js"
 import verifyField from "./verify-field.js"
 import cancel from "./cancel.js"
 import save from "./save.js"
-import rename from "./rename.js"
+import edit from "./edit.js"
 
-export default function listModal(action, listId) {
+export default function taskModal(action, taskId) {
     // Create modal element
     let modalContainer = document.createElement("div")
     modalContainer.classList.add("modal-container")
@@ -14,12 +14,12 @@ export default function listModal(action, listId) {
     modalContent.classList.add("modal-content")
     modalContainer.appendChild(modalContent)
 
-    let listNameField = document.createElement("textarea")
-    listNameField.classList.add("name-field")
-    listNameField.setAttribute("placeholder", "List name")
-    listNameField.setAttribute("maxlength", "60")
-    listNameField.setAttribute("rows", "1")
-    modalContent.appendChild(listNameField)
+    let taskNameField = document.createElement("textarea")
+    taskNameField.classList.add("name-field")
+    taskNameField.setAttribute("placeholder", "Task name")
+    taskNameField.setAttribute("maxlength", "120")
+    taskNameField.setAttribute("rows", "1")
+    modalContent.appendChild(taskNameField)
 
     let modalActions = document.createElement("div")
     modalActions.classList.add("modal-actions")
@@ -37,21 +37,23 @@ export default function listModal(action, listId) {
 
     // Verify modal action
     switch (action) {
-        // Save the new list
+        // Save the new task
         case "new":
-            save(saveBtn, listNameField, modalContainer)
+            save(saveBtn, taskNameField, modalContainer)
             break
 
-        // Rename the list
-        case "rename":
-            // Get list data
-            let listElement = document.querySelector(`[data-list-id="${listId}"]`)
-            let listElementName = listElement.querySelector(".list-name")
-            let listNameText = listElementName.innerText
+        // Edit the task
+        case "edit":
 
-            listNameField.value = listNameText
+
+            // Get task data
+            let taskElement = document.querySelector(`[data-task-id="${taskId}"]`)
+            let taskElementName = taskElement.querySelector(".task-name")
+            let taskNameText = taskElementName.innerText
             
-            rename(saveBtn, listNameField, modalContainer, listId)
+            taskNameField.value = taskNameText
+
+            edit(saveBtn, taskNameField, modalContainer, taskId)
             break
         
         // Alert the error on the console
@@ -61,20 +63,20 @@ export default function listModal(action, listId) {
     }
 
     // Exit modal clicking outside the modal
-    exitModal(modalContainer, listNameField)
-
-    // Increase or decrease the field height based on its value or window size
-    resizeField(listNameField, saveBtn)
+    exitModal(modalContainer, taskNameField)
 
     // Verify the input and disable the save button if necessary
-    verifyField(listNameField, saveBtn)
+    verifyField(taskNameField, saveBtn)
+
+    // Increase or decrease the field height based on its value or window size
+    resizeField(taskNameField, saveBtn)
 
     // Exit modal clicking on cancel button
-    cancel(cancelBtn, listNameField, modalContainer)
+    cancel(cancelBtn, taskNameField, modalContainer)
 
     // Add modal element to the HTML
     document.body.appendChild(modalContainer)
 
     // Enter (focus) the <textarea> automatically
-    listNameField.focus()
+    taskNameField.focus()
 }

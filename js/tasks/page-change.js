@@ -1,24 +1,40 @@
 import createTask from "./create-task.js"
+import taskModal from "./modal/task-modal.js"
 
 export default function changeListPage(list) {
     const mainContent = document.querySelector("main")
+
     mainContent.innerHTML = ""
     createListPage()
 
-    let tasksArray = list.listTasks
+    let tasksArray = list.tasks
     if (tasksArray.length) {
         tasksArray.forEach(task => {
-            let { name:taskName, id:taskId } = task
-            createTask(taskName, taskId)
+            let { name, id, checked } = task
+            createTask(name, id, checked)
         })
     }
 
+    let tasksContainer = document.querySelector(".tasks-container")
+
+    tasksContainer.addEventListener("click", e => {
+        let elm = e.target
+
+        if (elm.classList.contains("task")) {
+            let taskId = elm.dataset.taskId
+            taskModal("edit", taskId)
+    }
+
+    })
+
     function createListPage() {
-        let titleText = list.listName
+        // Get list data
+        let titleText = list.name
+        let listId = list.id
 
         // Create task page container 
         let listPage = document.createElement("div")
-        listPage.id = titleText
+        listPage.dataset.listId = listId
         listPage.classList.add("list-page")
         mainContent.appendChild(listPage)
 
@@ -37,7 +53,7 @@ export default function changeListPage(list) {
         newTaskBtn.classList.add("new-task")
         tasksActions.appendChild(newTaskBtn)
         
-        let newTaskBtnText = document.createElement("span")
+        let newTaskBtnText = document.createElement("div")
         newTaskBtnText.innerText = "New Task"
         newTaskBtn.appendChild(newTaskBtnText)
 

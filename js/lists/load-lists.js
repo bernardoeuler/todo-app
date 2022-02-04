@@ -1,4 +1,4 @@
-import changeListPage from "./page-change.js"
+import changeListPage from "../tasks/page-change.js"
 import createListObj from "./create-list-obj.js"
 import createList from "./create-list.js"
 
@@ -65,13 +65,4 @@ function render() {
         let { name, id, selected } = list
         createList(name, id, selected)
     })
-}
-
-function deleteList(list) {
-    listsContainer.removeChild(list)
-    let deletedListId = list.dataset.listId
-    let deletedListIndex = lists.findIndex(list => list.id === deletedListId)
-    lists.splice(deletedListIndex, 1)
-    let listsStr = JSON.stringify(lists)
-    localStorage.setItem("lists", listsStr)
 }

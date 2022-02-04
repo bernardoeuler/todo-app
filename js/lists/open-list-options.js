@@ -1,5 +1,5 @@
 import listModal from "./modal/list-modal.js"
-import changeListPage from "./page-change.js"
+import changeListPage from "../tasks/page-change.js"
 
 const listsSection = document.querySelector(".lists")
 
@@ -69,6 +69,13 @@ function openListOptions(e) {
             let rect = elm.getBoundingClientRect()
             return { x:rect.left, y:rect.top }
         }
+
+        menuOverlay.addEventListener("click", e => {
+            let elm = e.target
+            if (elm === menuOverlay) {
+                document.body.removeChild(menuOverlay)
+            }
+        })
     
         deleteOption.addEventListener("click", () => {
             document.body.removeChild(menuOverlay)
@@ -76,6 +83,8 @@ function openListOptions(e) {
             let deletedListIndex = lists.findIndex(list => list.id === listId)
             lists.splice(deletedListIndex, 1)
             lists[0].selected = true
+
+            listsSection.removeChild(listElement.nextElementSibling) // remove separator
             listsSection.removeChild(listElement)
 
     

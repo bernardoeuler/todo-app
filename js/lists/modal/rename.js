@@ -1,4 +1,4 @@
-import changeListPage from "../page-change.js"
+import changeListPage from "../../tasks/page-change.js"
 
 export default function rename(saveBtn, field, modalContainer, listId) {
     saveBtn.addEventListener("click", () => {

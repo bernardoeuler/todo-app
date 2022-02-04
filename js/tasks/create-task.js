@@ -1,6 +1,6 @@
 export default function createTask(taskNameText, taskId, checked) {
     // Get tasks container div
-    let tasksContainer = document.querySelector(".tasks-container")
+    const tasksContainer = document.querySelector(".tasks-container")
     
     // Create new task div
     let newTask = document.createElement("div")
@@ -49,15 +49,10 @@ export default function createTask(taskNameText, taskId, checked) {
     deleteBtn.style.display = "block"
     newTask.appendChild(deleteBtn)
 
-    // Create delete button background
-    let deleteBackground = document.createElement("div")
-    deleteBackground.classList.add("delete-background")
-    deleteBtn.appendChild(deleteBackground)
-
     // Create delete icon
     let deleteIcon = document.createElement("i")
     deleteIcon.classList.add("fas", "fa-times", "delete-icon")
-    deleteBackground.appendChild(deleteIcon)
+    deleteBtn.appendChild(deleteIcon)
 
     // Put the task on its container
     tasksContainer.insertBefore(newTask, tasksContainer.firstChild)
